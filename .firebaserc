@@ -1,7 +1,7 @@
 {
   "projects": {
-    "default": "devops-final-testing",
-    "staging": "devops-final-staging",
-    "production": "devops-final-production"
+    "default": "devops-final-testing-grm",
+    "staging": "devops-final-staging-grm",
+    "production": "devops-final-production-grm"
   }
 }
