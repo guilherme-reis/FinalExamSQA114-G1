@@ -3,7 +3,6 @@ pipeline {
 
     environment {
         FIREBASE_TOKEN = credentials('FIREBASE_TOKEN')
-        PATH = "$HOME/firebase-cli:$PATH"
     }
 
     stages {
@@ -13,7 +12,7 @@ pipeline {
                     mkdir -p $HOME/firebase-cli
                     curl -L https://firebase.tools/bin/linux/latest -o $HOME/firebase-cli/firebase
                     chmod +x $HOME/firebase-cli/firebase
-                    ./firebase --version
+                    $HOME/firebase-cli/firebase --version
                 '''
             }
         }
@@ -21,8 +20,8 @@ pipeline {
         stage('Deploy to Testing') {
             steps {
                 sh '''
-                    firebase use devops-final-testing
-                    firebase deploy --only hosting --token "$FIREBASE_TOKEN"
+                    $HOME/firebase-cli/firebase use devops-final-testing
+                    $HOME/firebase-cli/firebase deploy --only hosting --token "$FIREBASE_TOKEN"
                 '''
             }
         }
@@ -36,8 +35,8 @@ pipeline {
         stage('Deploy to Staging') {
             steps {
                 sh '''
-                    firebase use devops-final-staging
-                    firebase deploy --only hosting --token "$FIREBASE_TOKEN"
+                    $HOME/firebase-cli/firebase use devops-final-staging
+                    $HOME/firebase-cli/firebase deploy --only hosting --token "$FIREBASE_TOKEN"
                 '''
             }
         }
@@ -51,8 +50,8 @@ pipeline {
         stage('Deploy to Production') {
             steps {
                 sh '''
-                    firebase use devops-final-production
-                    firebase deploy --only hosting --token "$FIREBASE_TOKEN"
+                    $HOME/firebase-cli/firebase use devops-final-production
+                    $HOME/firebase-cli/firebase deploy --only hosting --token "$FIREBASE_TOKEN"
                 '''
             }
         }
