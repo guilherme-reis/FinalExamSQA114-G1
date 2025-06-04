@@ -3,12 +3,17 @@ pipeline {
 
     environment {
         FIREBASE_TOKEN = credentials('FIREBASE_TOKEN')
+        PATH = "$HOME/.firebase/bin:$PATH"
     }
 
     stages {
         stage('Install Firebase CLI') {
             steps {
-                sh 'curl -sL https://firebase.tools | bash'
+                sh '''
+                curl -sL https://firebase.tools | bash
+                which firebase
+                firebase --version
+                '''
             }
         }
 
