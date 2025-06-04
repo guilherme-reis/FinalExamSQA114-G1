@@ -20,7 +20,7 @@ pipeline {
         stage('Deploy to Testing') {
             steps {
                 sh '''
-                    $HOME/firebase-cli/firebase use devops-final-testing
+                    $HOME/firebase-cli/firebase use devops-final-testing-grm
                     $HOME/firebase-cli/firebase deploy --only hosting --token "$FIREBASE_TOKEN"
                 '''
             }
@@ -35,7 +35,7 @@ pipeline {
         stage('Deploy to Staging') {
             steps {
                 sh '''
-                    $HOME/firebase-cli/firebase use devops-final-staging
+                    $HOME/firebase-cli/firebase use devops-final-staging-grm
                     $HOME/firebase-cli/firebase deploy --only hosting --token "$FIREBASE_TOKEN"
                 '''
             }
@@ -50,7 +50,7 @@ pipeline {
         stage('Deploy to Production') {
             steps {
                 sh '''
-                    $HOME/firebase-cli/firebase use devops-final-production
+                    $HOME/firebase-cli/firebase use devops-final-production-grm
                     $HOME/firebase-cli/firebase deploy --only hosting --token "$FIREBASE_TOKEN"
                 '''
             }
