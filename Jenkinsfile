@@ -6,12 +6,6 @@ pipeline {
     }
 
     stages {
-        stage('Clone Repository') {
-            steps {
-                git 'https://github.com/guilherme-reis/FinalExamSQA114-G1.git'
-            }
-        }
-
         stage('Install Firebase CLI') {
             steps {
                 sh 'curl -sL https://firebase.tools | bash'
